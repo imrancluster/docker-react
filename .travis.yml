@@ -5,6 +5,8 @@ services:
 before_install:
   - docker build -t imrancluster/docker-react -f Dockerfile.dev .
 
+install: travis_wait 30 mvn install
+
 script:
   - docker run imrancluster/docker-react npm run test -- --coverage
 
